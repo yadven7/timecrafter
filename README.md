@@ -1,81 +1,136 @@
-# 📚 Smart Study Planner
+# 🚀 TimeCrafter – Smart Productivity & Study Planner
 
-**Smart Study Planner** is a desktop application built with **Python and Tkinter** that helps students efficiently plan, prioritize, and track their study goals using a clean interface and intelligent scheduling logic.
-
----
-
-## 🧠 Features
-
-### ✅ Task Manager
-- Add, complete, and delete tasks
-- Strike-through completed items
-- Optional task priority: `None`, `Low`, `Medium`, `High`, `Urgent`
-- Tasks saved locally in `tasks.json`
-
-### ✅ Study Goals Tracker
-- Add long-term study goals
-- Optional due date per goal
-- View & track progress
-- Saved in `goals.json`
-
-### ✅ Smart Schedule Generator (AI Logic)
-- Enter available study time (e.g., 3 PM – 9 PM)
-- List subjects with estimated duration & urgency
-- Automatically generates an optimized schedule using heuristics
-- Prioritizes urgent and short tasks
-- Clear, time-based output format
-
-### ✅ Pomodoro Timer
-- Customize focus and break durations
-- Start/Pause/Resume/Stop timer
-- Looping cycles with pop-up reminders
-- Prevents multiple concurrent sessions
-
-### ✅ Motivational Quotes
-- Refreshable library of uplifting quotes
-- Displayed on-demand and on the dashboard
-
-### ✅ Dashboard
-- At-a-glance view of:
-  - Pending tasks (sorted by priority)
-  - Active goals
-  - Today’s smart schedule
-  - Motivational quote of the day
-
-### ✅ Settings
-- Switch between Light and Dark modes
-- Change font family and size
-- Set fixed window size (non-resizable for consistency)
+TimeCrafter is a full-stack productivity web application designed to help students plan, track, and optimize their study workflow using intelligent scheduling, Pomodoro focus techniques, and an AI-powered study assistant.
 
 ---
 
-## 🗂 Folder Structure
+## 🌟 Features
 
-study_planner_app/
-├── main.py
-├── ui/
-│ ├── dashboard.py
-│ ├── task_manager.py
-│ ├── goals_tracker.py
-│ ├── scheduler.py
-│ ├── quotes.py
-│ ├── pomodoro.py
-│ └── settings.py
-├── utils/
-│ ├── theme.py
-│ └── settings_data.py
-├── data/
-│ ├── tasks.json
-│ └── goals.json
+### ✅ Task Management
+- Add, complete, delete tasks
+- Priority-based organization (None, Low, Medium, High, Urgent)
+- Auto-sorted tasks (Urgent → Low)
+- Filter: All / Pending / Completed
+
 ---
 
-## 🚀 Getting Started
+### 🎯 Goals Tracking
+- Create long-term study goals
+- Set deadlines
+- Track progress with visual progress bar
+- Quick update buttons (25%, 50%, 75%, 100%)
+- Edit & delete goals
+- Real-time progress updates
 
-### Requirements
-- Python 3.8 or later
-- `tkinter` (comes pre-installed with Python)
+---
 
-### Run the App
+### ⏱️ Pomodoro Timer
+- Custom focus & break durations
+- Session tracking
+- Persistent timer (does not reset on refresh)
+- Cycle-based productivity tracking
 
-```bash
-python main.py
+---
+
+### 📊 Dashboard Analytics (USP)
+- Productivity Score calculation
+- Completed vs Pending tasks
+- Goal tracking stats
+- Visual charts (bar, pie, consistency trends)
+- Insights for performance improvement
+
+---
+
+### 🤖 AI Study Assistant (Chatbot)
+- Topic explanation
+- Study roadmap generation
+- Important subtopics suggestion
+- Resource recommendations
+- Smart fallback system (works even if API fails)
+
+---
+
+### 💬 Motivational Quotes
+- Dynamic quote generator
+- Arrow navigation (← →)
+- Auto-refresh system
+- Enhances user engagement
+
+---
+
+### 📱 Responsive UI
+- Works on mobile & desktop
+- Clean modern UI (Tailwind CSS)
+- Optimized layouts for all screen sizes
+
+---
+
+### 📲 Progressive Web App (PWA)
+- Installable on mobile (Add to Home Screen)
+- App-like experience
+- Custom icon support
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- Recharts (Data Visualization)
+
+### Backend
+- FastAPI (Python)
+- Gemini API (AI integration)
+- Custom fallback AI logic
+
+### Database & Auth
+- Supabase (PostgreSQL + Authentication)
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+
+---
+
+## 📂 Project Structure
+TimeCrafter/
+│
+├── frontend/ # React App
+│ ├── src/
+│ ├── public/
+│ └── package.json
+│
+├── backend/ # FastAPI Backend
+│ ├── app.py
+│ ├── chatbot.py
+│ ├── models.py
+│ └── logic/
+│
+├── README.md
+└── .gitignore
+
+🌐 Live Demo
+
+👉 Coming Soon (Deployed on Vercel & Render)
+
+📱 Mobile Usage
+Open the app in Chrome
+Click Add to Home Screen
+Use as a native app
+
+
+💡 Key Highlights (For Viva)
+Full-stack deployed project
+AI-powered study assistant
+Real-time productivity tracking
+Smart fallback system for AI reliability
+Mobile-ready PWA application
+
+
+👨‍💻 Author
+
+Yadvendra Malviya
+B.Tech Final Year Student
+
+TimeCrafter helps you not just manage time — but craft it efficiently.
