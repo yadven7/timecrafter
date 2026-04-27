@@ -1,0 +1,31 @@
+# Node modules
+frontend/node_modules/
+
+# Build files
+frontend/dist/
+
+# Environment variables
+.env
+frontend/.env
+
+# Python virtual env
+backend/venv/
+backend/venv311/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Vite cache
+node_modules/.vite
+
+# IDE
+.vscode/
+.idea/
