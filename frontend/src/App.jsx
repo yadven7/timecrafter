@@ -83,7 +83,7 @@ function App() {
   if (!error) setTasks(data || []);
   };
 
- const fetchGoals = async () => {
+const fetchGoals = async () => {
   if (!user) return;
 
   const { data, error } = await supabase
@@ -94,7 +94,6 @@ function App() {
 
   if (!error) setGoals(data || []);
 };
-
   useEffect(() => {
   fetchTasks();
   fetchGoals();
@@ -528,11 +527,13 @@ const insight =
       body: JSON.stringify({ message: userMessage }),
     });
 
-    const data = await res.json();
+    const responseData = await res.json();
 
     setChatMessages((prev) => [
       ...prev,
-      { sender: "bot", text: data.reply || "No reply received." },
+      { sender: "bot", text: responseData.reply ||  responseData.message || "No reply received.",
+
+       },
     ]);
   } catch (error) {
     setChatMessages((prev) => [

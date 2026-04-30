@@ -15,6 +15,36 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi import FastAPI
+from pydantic import BaseModel
+import google.generativeai as genai
+
+app = FastAPI()
+
+genai.configure(api_key="YOUR_GEMINI_API_KEY")
+
+class Query(BaseModel):
+    question: str
+
+# Default fallback
+def fallback_answer(q):
+    return f"Sorry, AI abhi busy hai 😅\n\nBut aap '{q}' YouTube ya Google pe search karo — ye topic important hai!"
+
+@app.post("/chat")
+async def chat(query: Query):
+    try:
+        model = genai.GenerativeModel("gemini-pro")
+        response = model.generate_content(query.question)
+
+        if response and response.text:
+            return {"reply": response.text}
+
+    except Exception as e:
+        print("Gemini Error:", e)
+
+    # fallback
+    return {"reply": fallback_answer(query.question)}
+
 
 @app.get("/tasks")
 def read_tasks():
@@ -56,3 +86,14 @@ def remove_goal(goal_id: int):
 def study_chat(request: ChatRequest):
     reply = get_study_reply(request.message)
     return {"reply": reply}
+
+@app.get("/")
+def home():
+    return {"message": "TimeCrafter backend is running"}
+
+@app.get("/quote/random")
+def random_quote():
+    return {
+        "quote": "Small progress every day leads to big results.",
+        "author": "TimeCrafter"
+    }
