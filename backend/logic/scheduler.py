@@ -1,32 +1,30 @@
-def generate_schedule(start_time, end_time, subjects):
-    # time convert to minutes
-    def to_minutes(t):
-        h, m = map(int, t.split(":"))
-        return h * 60 + m
+from pydantic import BaseModel
+from typing import List
+from datetime import date
 
-    def to_time(m):
-        return f"{m//60:02d}:{m%60:02d}"
 
-    start = to_minutes(start_time)
-    end = to_minutes(end_time)
+class ScheduleBlock(BaseModel):
+    id: int
+    title: str
+    category: str = "Focus"
+    startHour: int
+    duration: float = 1
+    day: str = str(date.today())
 
-    # sort by urgency + duration
-    priority_map = {"High": 1, "Medium": 2, "Low": 3}
-    subjects.sort(key=lambda x: (priority_map[x["urgency"]], x["duration"]))
 
-    schedule = []
-    current = start
+blocks_db: List[ScheduleBlock] = []
 
-    for sub in subjects:
-        if current + sub["duration"] > end:
-            break
 
-        schedule.append({
-            "task": sub["name"],
-            "start": to_time(current),
-            "end": to_time(current + sub["duration"])
-        })
+def get_blocks():
+    return blocks_db
 
-        current += sub["duration"]
 
-    return schedule
+def add_block(block: ScheduleBlock):
+    blocks_db.append(block)
+    return block
+
+
+def delete_block(block_id: int):
+    global blocks_db
+    blocks_db = [block for block in blocks_db if block.id != block_id]
+    return {"message": "Block deleted successfully"}
