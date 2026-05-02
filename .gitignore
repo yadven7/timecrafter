@@ -7,3 +7,5 @@ __pycache__
 venv
 venv311
 .DS_Store
+frontend/.env
+backend/.env
